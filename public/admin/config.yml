@@ -5,8 +5,6 @@ backend:
 media_folder: "src/assets/images"
 public_folder: "/assets"
 
-local_backend: true
-
 collections:
   - name: "blog"
     label: "Blog"
