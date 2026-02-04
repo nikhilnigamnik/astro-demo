@@ -14,8 +14,37 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
-      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
-      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - {
+          label: "Updated Date",
+          name: "updatedDate",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Hero Image",
+          name: "heroImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          field: { name: "tag", widget: "string" },
+        }
+      - { label: "Author Name", name: "authorName", widget: "string" }
+      - {
+          label: "Author Image",
+          name: "authorImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Author Designation",
+          name: "authorDesignation",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "pages"
@@ -24,16 +53,10 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "projects"
-    label: "Projects"
-    folder: "src/content/projects"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Link", name: "link", widget: "string", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
