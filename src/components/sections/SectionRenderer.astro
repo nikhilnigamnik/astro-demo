@@ -1,0 +1,98 @@
+---
+import HeroSection from "./HeroSection.astro";
+import ProblemSection from "./ProblemSection.astro";
+import SolutionSection from "./SolutionSection.astro";
+import FeatureGrid from "./FeatureGrid.astro";
+import BulletList from "./BulletList.astro";
+
+interface HeroSectionData {
+  type: "hero";
+  title: string;
+  description: string;
+  image?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  bullets?: Array<{
+    title: string;
+    description?: string;
+  }>;
+}
+
+interface ProblemSectionData {
+  type: "problem";
+  label?: string;
+  title: string;
+  description: string;
+}
+
+interface SolutionSectionData {
+  type: "solution";
+  label?: string;
+  title: string;
+  description: string;
+}
+
+interface FeatureGridData {
+  type: "featureGrid";
+  columns?: number;
+  features: Array<{
+    title: string;
+    description: string;
+    icon?: string;
+  }>;
+}
+
+interface BulletListData {
+  type: "bulletList";
+  items: Array<{
+    title: string;
+    description?: string;
+  }>;
+}
+
+type Section = HeroSectionData | ProblemSectionData | SolutionSectionData | FeatureGridData | BulletListData;
+
+interface Props {
+  section: Section;
+}
+
+const { section } = Astro.props;
+---
+
+{section.type === "hero" && (
+  <HeroSection
+    title={section.title}
+    description={section.description}
+    image={section.image}
+    buttonText={section.buttonText}
+    buttonLink={section.buttonLink}
+    bullets={section.bullets}
+  />
+)}
+
+{section.type === "problem" && (
+  <ProblemSection
+    label={section.label}
+    title={section.title}
+    description={section.description}
+  />
+)}
+
+{section.type === "solution" && (
+  <SolutionSection
+    label={section.label}
+    title={section.title}
+    description={section.description}
+  />
+)}
+
+{section.type === "featureGrid" && (
+  <FeatureGrid
+    columns={section.columns}
+    features={section.features}
+  />
+)}
+
+{section.type === "bulletList" && (
+  <BulletList items={section.items} />
+)}

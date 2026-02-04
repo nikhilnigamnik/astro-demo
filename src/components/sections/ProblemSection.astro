@@ -1,0 +1,23 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  description: string;
+}
+
+const { label = "THE PROBLEM", title, description } = Astro.props;
+---
+
+<section class="py-16 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-gray-900 text-white rounded-2xl p-10 md:p-14">
+      {label && (
+        <span class="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-4 block">
+          {label}
+        </span>
+      )}
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">{title}</h2>
+      <p class="text-lg text-gray-300 leading-relaxed">{description}</p>
+    </div>
+  </div>
+</section>

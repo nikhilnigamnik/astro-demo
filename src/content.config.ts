@@ -1,6 +1,57 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+const sectionSchema = z.discriminatedUnion("type", [
+  z.object({
+    type: z.literal("hero"),
+    title: z.string(),
+    description: z.string(),
+    image: z.string().optional(),
+    buttonText: z.string().optional(),
+    buttonLink: z.string().optional(),
+    bullets: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string().optional(),
+        })
+      )
+      .optional(),
+  }),
+  z.object({
+    type: z.literal("problem"),
+    label: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+  }),
+  z.object({
+    type: z.literal("solution"),
+    label: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+  }),
+  z.object({
+    type: z.literal("featureGrid"),
+    columns: z.number().default(2),
+    features: z.array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        icon: z.string().optional(),
+      })
+    ),
+  }),
+  z.object({
+    type: z.literal("bulletList"),
+    items: z.array(
+      z.object({
+        title: z.string(),
+        description: z.string().optional(),
+      })
+    ),
+  }),
+]);
+
 const blog = defineCollection({
   loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
@@ -26,15 +77,18 @@ const pages = defineCollection({
     }),
 });
 
-const projects = defineCollection({
-  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+const features = defineCollection({
+  loader: glob({ base: "./src/content/features", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       description: z.string(),
-      link: z.string().optional(),
-      image: image().optional(),
+      pubDate: z.coerce.date().optional(),
+      heroImage: z.string().optional(),
+      buttonLink: z.string().optional(),
+      buttonText: z.string().optional(),
+      sections: z.array(sectionSchema).optional(),
     }),
 });
 
-export const collections = { blog, pages, projects };
+export const collections = { blog, pages, features };

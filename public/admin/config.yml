@@ -60,3 +60,92 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "features"
+    label: "Features"
+    folder: "src/content/features"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", required: false }
+      - {
+          label: "Hero Image",
+          name: "heroImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Button Link",
+          name: "buttonLink",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Button Text",
+          name: "buttonText",
+          widget: "string",
+          required: false,
+        }
+      - name: "sections"
+        label: "Sections"
+        widget: "list"
+        required: false
+        types:
+          - name: "hero"
+            label: "Hero Section"
+            fields:
+              - { name: "type", widget: "hidden", default: "hero" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", widget: "image", required: false }
+              - { name: "buttonText", label: "Button Text", widget: "string", required: false }
+              - { name: "buttonLink", label: "Button Link", widget: "string", required: false }
+              - name: "bullets"
+                label: "Bullet Points"
+                widget: "list"
+                required: false
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text", required: false }
+
+          - name: "problem"
+            label: "Problem Section"
+            fields:
+              - { name: "type", widget: "hidden", default: "problem" }
+              - { name: "label", label: "Label", widget: "string", default: "THE PROBLEM", required: false }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+
+          - name: "solution"
+            label: "Solution Section"
+            fields:
+              - { name: "type", widget: "hidden", default: "solution" }
+              - { name: "label", label: "Label", widget: "string", default: "THE SOLUTION", required: false }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+
+          - name: "featureGrid"
+            label: "Feature Grid"
+            fields:
+              - { name: "type", widget: "hidden", default: "featureGrid" }
+              - { name: "columns", label: "Columns", widget: "number", default: 2, required: false }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "icon", label: "Icon (emoji)", widget: "string", required: false }
+
+          - name: "bulletList"
+            label: "Bullet List"
+            fields:
+              - { name: "type", widget: "hidden", default: "bulletList" }
+              - name: "items"
+                label: "Items"
+                widget: "list"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

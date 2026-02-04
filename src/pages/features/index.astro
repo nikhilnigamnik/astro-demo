@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Features" description="Explore our powerful features" />
+  </head>
+  <body class="bg-neutral-50">
+    <main class="max-w-7xl mx-auto px-4 py-16">
+      <section class="flex flex-col gap-2">
+        {
+          (await getCollection("features")).map((feature) => (
+            <a href={`/features/${feature.id}/`} class="">
+              <h2 class="text-base! font-semibold text-neutral-900">
+                {feature.id}
+              </h2>
+            </a>
+          ))
+        }
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
