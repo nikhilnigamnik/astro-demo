@@ -31,31 +31,37 @@ const { Content } = await render(feature);
           <p class="text-center text-base max-w-4xl mx-auto">
             {feature.data.description}
           </p>
-          {feature.data.buttonText && feature.data.buttonLink && (
-            <a
-              href={feature.data.buttonLink}
-              class="text-center text-base bg-[#A9E000] mx-auto py-3 px-5 rounded-md text-black!"
-            >
-              {feature.data.buttonText}
-            </a>
-          )}
-          {feature.data.heroImage && (
-            <img
-              src={feature.data.heroImage}
-              alt={feature.id}
-              width="840px"
-              class="mx-auto mt-10"
-            />
-          )}
+          {
+            feature.data.buttonText && feature.data.buttonLink && (
+              <a
+                href={feature.data.buttonLink}
+                class="text-center text-base bg-[#A9E000] mx-auto py-3 px-5 rounded-md text-black!"
+              >
+                {feature.data.buttonText}
+              </a>
+            )
+          }
+          {
+            feature.data.heroImage && (
+              <img
+                src={feature.data.heroImage}
+                alt={feature.id}
+                width="900px"
+                class="mx-auto mt-10"
+              />
+            )
+          }
         </header>
 
-        {feature.data.sections && feature.data.sections.length > 0 && (
-          <div class="sections">
-            {feature.data.sections.map((section) => (
-              <SectionRenderer section={section} />
-            ))}
-          </div>
-        )}
+        {
+          feature.data.sections && feature.data.sections.length > 0 && (
+            <div class="sections">
+              {feature.data.sections.map((section) => (
+                <SectionRenderer section={section} />
+              ))}
+            </div>
+          )
+        }
 
         <div class="prose prose-lg max-w-none">
           <Content />
@@ -63,4 +69,5 @@ const { Content } = await render(feature);
       </article>
     </main>
   </body>
+
 </html>

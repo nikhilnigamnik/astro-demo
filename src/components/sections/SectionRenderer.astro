@@ -3,7 +3,7 @@ import HeroSection from "./HeroSection.astro";
 import ProblemSection from "./ProblemSection.astro";
 import SolutionSection from "./SolutionSection.astro";
 import FeatureGrid from "./FeatureGrid.astro";
-import BulletList from "./BulletList.astro";
+import OtherFeatures from "./OtherFeatures.astro";
 
 interface HeroSectionData {
   type: "hero";
@@ -42,15 +42,29 @@ interface FeatureGridData {
   }>;
 }
 
-interface BulletListData {
-  type: "bulletList";
+interface OtherFeaturesData {
+  type: "otherFeatures";
+  label?: string;
+  title?: string;
+  description?: string;
   items: Array<{
+    label?: string;
     title: string;
     description?: string;
+    banner?: string;
+    url?: string;
+    items?: Array<{
+      title: string;
+    }>;
   }>;
 }
 
-type Section = HeroSectionData | ProblemSectionData | SolutionSectionData | FeatureGridData | BulletListData;
+type Section =
+  | HeroSectionData
+  | ProblemSectionData
+  | SolutionSectionData
+  | FeatureGridData
+  | OtherFeaturesData;
 
 interface Props {
   section: Section;
@@ -59,40 +73,46 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-{section.type === "hero" && (
-  <HeroSection
-    title={section.title}
-    description={section.description}
-    image={section.image}
-    buttonText={section.buttonText}
-    buttonLink={section.buttonLink}
-    bullets={section.bullets}
-  />
-)}
+{
+  section.type === "hero" && (
+    <HeroSection
+      title={section.title}
+      description={section.description}
+      image={section.image}
+      buttonText={section.buttonText}
+      buttonLink={section.buttonLink}
+      bullets={section.bullets}
+    />
+  )
+}
 
-{section.type === "problem" && (
-  <ProblemSection
+{
+  section.type === "problem" && (
+    <ProblemSection
+      label={section.label}
+      title={section.title}
+      description={section.description}
+    />
+  )
+}
+
+{
+  section.type === "solution" && (
+    <SolutionSection
+      label={section.label}
+      title={section.title}
+      description={section.description}
+    />
+  )
+}
+
+{section.type === "featureGrid" && <FeatureGrid features={section.features} />}
+
+{section.type === "otherFeatures" && (
+  <OtherFeatures
     label={section.label}
     title={section.title}
     description={section.description}
+    items={section.items}
   />
-)}
-
-{section.type === "solution" && (
-  <SolutionSection
-    label={section.label}
-    title={section.title}
-    description={section.description}
-  />
-)}
-
-{section.type === "featureGrid" && (
-  <FeatureGrid
-    columns={section.columns}
-    features={section.features}
-  />
-)}
-
-{section.type === "bulletList" && (
-  <BulletList items={section.items} />
 )}

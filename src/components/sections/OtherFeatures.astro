@@ -1,0 +1,97 @@
+---
+interface Props {
+  label?: string;
+  title?: string;
+  description?: string;
+  items: Array<{
+    label?: string;
+    title: string;
+    description?: string;
+    banner?: string;
+    url?: string;
+    items?: Array<{
+      title: string;
+    }>;
+  }>;
+}
+
+const { label, title, description, items } = Astro.props;
+---
+
+<section class="py-16 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-black! rounded-2xl text-center p-14">
+      {
+        label && (
+          <span class="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
+            {label}
+          </span>
+        )
+      }
+      <h2 class="text-3xl! text-black! font-medium my-5!">{title}</h2>
+      <p class="text-base max-w-2xl mx-auto text-neutral-500">
+        {description}
+      </p>
+    </div>
+
+    <div class="grid gap-6 grid-cols-1">
+      {
+        items.map((item) => (
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            {item.label && (
+              <p class="text-base font-medium text-black p-4 bg-neutral-100">
+                {item.label}
+              </p>
+            )}
+            <div class="flex gap-6">
+              <div class="p-6">
+                <h3 class="font-semibold text-xl">{item.title}</h3>
+                {item.description && (
+                  <p class="text-gray-600 text-sm">{item.description}</p>
+                )}
+
+                {item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    class="inline-flex text-sm items-center bg-black text-white! px-4 py-2 rounded-xl"
+                  >
+                    Learn more
+                  </a>
+                )}
+                {item.items && item.items.length > 0 && (
+                  <ul class="space-y-4 mt-10">
+                    {item.items.map((subItem) => (
+                      <li class="flex items-start gap-2 bg-blue-600/10 p-2 rounded-xl">
+                        <svg
+                          class="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span class="text-sm! text-blue-600">
+                          {subItem.title}
+                        </span>
+                      </li>
+                    ))}
+                    <span class="text-blue-600 text-xs">+more</span>
+                  </ul>
+                )}
+              </div>
+              {item.banner && (
+                <img src={item.banner} alt={item.title} class="w-1/2" />
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

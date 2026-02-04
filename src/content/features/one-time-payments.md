@@ -7,51 +7,51 @@ buttonText: "Get Started"
 sections:
   - type: problem
     label: "THE PROBLEM"
-    title: "Simple purchases shouldn't require complex integrations"
-    description: "Selling digital products should be easy. But most payment solutions force you to deal with complicated checkout flows, manual fulfillment, and endless configuration just to sell a single product."
+    title: "Subscriptions Are Not Always the Answer"
+    description: "Not every product needs recurring billing. For e-books, lifetime licenses, digital downloads, or one-off add-ons, subscription-focused billing systems create unnecessary complexity and a clunky customer experience."
 
   - type: solution
-    label: "THE SOLUTION"
-    title: "One-click checkout for instant sales"
-    description: "Create a payment link, share it anywhere, and start selling. Dodo Payments handles the entire purchase flow from checkout to delivery, so you can focus on creating great products."
-
-  - type: hero
-    title: "Instant Digital Delivery"
-    description: "When a customer completes their purchase, they get immediate access. No waiting, no manual steps, no friction."
-    buttonText: "See How It Works"
-    buttonLink: "https://docs.dodopayments.com"
-    bullets:
-      - title: "Automatic license key generation"
-        description: "Generate and deliver unique keys instantly"
-      - title: "Secure download links"
-        description: "Time-limited URLs that prevent unauthorized sharing"
-      - title: "Email delivery"
-        description: "Customers receive everything they need automatically"
+    label: "One-Time Payments Made Simple"
+    title: "Sell Products, Not Subscriptions"
+    description: "Dodo Payments gives you a lightweight, integrated way to sell one-off products without rebuilding billing flows. Add products in minutes, deliver instantly, and track purchases all with tax, compliance, and reporting handled for you."
 
   - type: featureGrid
-    columns: 2
+    columns: 3
     features:
-      - title: "Payment Links"
-        description: "Generate shareable links for any product. Perfect for social media, email, and embedded checkouts."
-        icon: "🔗"
-      - title: "Multiple Currencies"
-        description: "Accept payments in 135+ currencies with automatic conversion and local pricing."
-        icon: "💱"
-      - title: "Fraud Protection"
-        description: "Built-in fraud detection protects your business without blocking legitimate customers."
-        icon: "🛡️"
-      - title: "Instant Payouts"
-        description: "Access your funds quickly with fast settlement times and transparent fees."
-        icon: "⚡"
+      - title: "Instant Purchases Without Commitments"
+        description: "Sell digital goods, licenses, or lifetime access with a single upfront payment no recurring charges, no complexity."
+      - title: "Simple Setup"
+        description: "Create one-time products directly from your dashboard with clear pricing, descriptions, and media."
+      - title: "Perfect for Digital Goods"
+        description: "E-books, software licenses, downloadable content, or any lifetime offer."
+      - title: "Discount Support"
+        description: "Run limited-time promotions with built-in discount options."
+      - title: "Flexible Management"
+        description: "Edit price, description, or media at any time; changes only affect future sales."
+      - title: "Archive Products"
+        description: "Remove discontinued items from your catalogue without affecting existing buyers."
 
-  - type: bulletList
+  - type: otherFeatures
+    label: "Other Features"
+    title: "The Complete Monetization Stack"
+    description: "From payments to billing to distribution, handle every part of monetization without extra engineering."
     items:
-      - title: "No monthly fees"
-        description: "Only pay when you make a sale"
-      - title: "Global tax compliance"
-        description: "We handle VAT, GST, and sales tax automatically"
-      - title: "Refund management"
-        description: "Process refunds with one click"
-      - title: "Receipt customization"
-        description: "Brand your receipts and invoices"
+      - label: "Payments"
+        title: "Payments, Without the Roadblocks"
+        description: "Integrate once and start accepting payments everywhere with local methods, multiple currencies, and full Merchant of Record support built in."
+        banner: "https://framerusercontent.com/images/Ae7ktSqwyb2ORlgs6IiJXYlqo4.png?width=1920&height=1536"
+        url: "https://dodopayments.com/payments"
+        items:
+          - title: "Merchant of Record"
+          - title: "Local Payment Methods"
+          - title: "Tax & Compliance"
+      - label: "Distribution"
+        title: "Distribution, Without the Friction"
+        description: "Launch storefronts, deliver digital products, and run affiliate programs. All with a single integration."
+        banner: "https://framerusercontent.com/images/0pXQFgfSmjc21dzC3DkmYR7Is.png?width=1920&height=1536"
+        url: "https://dodopayments.com/distribution"
+        items:
+          - title: "Storefronts"
+          - title: "Digital Product Delivery"
+          - title: "Affiliate Programs"
 ---

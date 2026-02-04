@@ -14,7 +14,7 @@ const sectionSchema = z.discriminatedUnion("type", [
         z.object({
           title: z.string(),
           description: z.string().optional(),
-        })
+        }),
       )
       .optional(),
   }),
@@ -32,22 +32,33 @@ const sectionSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("featureGrid"),
-    columns: z.number().default(2),
     features: z.array(
       z.object({
         title: z.string(),
         description: z.string(),
-        icon: z.string().optional(),
-      })
+      }),
     ),
   }),
   z.object({
-    type: z.literal("bulletList"),
+    type: z.literal("otherFeatures"),
+    label: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
     items: z.array(
       z.object({
+        label: z.string().optional(),
         title: z.string(),
         description: z.string().optional(),
-      })
+        banner: z.string().optional(),
+        url: z.string().optional(),
+        items: z
+          .array(
+            z.object({
+              title: z.string(),
+            }),
+          )
+          .optional(),
+      }),
     ),
   }),
 ]);
